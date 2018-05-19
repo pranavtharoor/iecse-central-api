@@ -33,9 +33,9 @@ const EventSession = new GraphQLObjectType({
 				}
 			},
 			event: {
-				type: GraphQLString,
+				type: Event,
 				resolve(eventSession) {
-					return "Well..."
+					return eventSession.getEvent();
 				}
 			}
 		}
