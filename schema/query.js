@@ -34,8 +34,8 @@ const query = new GraphQLObjectType({
 			},
 			sessions: {
 				type: new GraphQLList(EventSession),
-				resolve(eventSession, args) {
-					return models.event.findAll({where: args});
+				resolve(root, args) {
+					return models.eventsession.findAll({where: args});
 				}
 			}
 		}

@@ -7,6 +7,7 @@ const {
 	GraphQLNonNull
 	
 } = require("graphql");
+const Event = require("./eventType");
 
 const EventSession = new GraphQLObjectType({
 	name: "EventSession",
@@ -31,11 +32,10 @@ const EventSession = new GraphQLObjectType({
 					return eventSession.description;
 				}
 			},
-			event: {	
+			event: {
 				type: GraphQLString,
 				resolve(eventSession) {
-					console.log(eventSession)
-					return eventSession.getEvent();
+					return "Well..."
 				}
 			}
 		}

@@ -3,7 +3,7 @@ const GraphHTTP = require('express-graphql');
 const Schema = require('./schema');
 const models = require("./models");
 
-const port = 4000;
+const port = 9876;
 const app = express();
 
 
