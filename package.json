@@ -1,0 +1,36 @@
+{
+  "name": "iecse-central-api",
+  "version": "1.0.0",
+  "description": "IECSE's database interface layer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pranavtharoor/central-api.git"
+  },
+  "keywords": [
+    "GraphQL",
+    "Express.js",
+    "Node.js",
+    "Sequilize",
+    "Express-graphql"
+  ],
+  "author": "IECSE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pranavtharoor/central-api/issues"
+  },
+  "homepage": "https://github.com/pranavtharoor/central-api#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-graphql": "^0.6.12",
+    "faker": "^4.1.0",
+    "graphiql": "^0.11.11",
+    "graphql": "^0.13.2",
+    "lodash": "^4.17.10",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.37.7"
+  }
+}
