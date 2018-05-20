@@ -7,7 +7,6 @@ const {
 	GraphQLNonNull
 	
 } = require("graphql");
-const EventSession = require('./eventSessionType');
 
 
 const Event = new GraphQLObjectType({
@@ -50,3 +49,4 @@ const Event = new GraphQLObjectType({
 });
 
 module.exports = Event;
+const EventSession = require('./eventSessionType');
