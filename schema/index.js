@@ -5,7 +5,8 @@ const mutation = require('./mutation');
 
 // Schema
 const schema = new GraphQLSchema({
-  query
-})
+  query : query,
+  mutation : mutation
+});
 
 module.exports = schema;
