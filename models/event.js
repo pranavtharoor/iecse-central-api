@@ -12,18 +12,22 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: true
 		},
+        details: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
 		startDate: {
 			type: DataTypes.DATE,
 			allowNull: true
 		},
+        endDate: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
 		audienceType: {
 			type: DataTypes.STRING,
 			allowNull: true
 		},
-		// created_by: {
-		// 	type: DataTypes.STRING,
-		// 	allowNull: true
-		// },
 		status: {
 			type: DataTypes.STRING,
 			allowNull: true
@@ -32,13 +36,14 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: true
 		}
-	});
+    });
 
-  Event.associate = function(models) {
-	models.event.belongsTo(models.user,{ foreignKey : 'created_by' });
-	models.event.belongsTo(models.user,{ foreignKey : 'modified_by' });
-    models.event.hasMany(models.eventsession);
-  };
+    Event.associate = function(models) {
+        models.event.belongsTo(models.user,{ foreignKey : 'created_by' });
+        models.event.belongsTo(models.user,{ foreignKey : 'modified_by' });
+        models.event.hasMany(models.eventsession);
+    };
+
 
 	return Event;
 };

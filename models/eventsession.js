@@ -1,6 +1,6 @@
 'use strict';
 
-// @TODO: Chaneg all fields to not null
+// @TODO: Change all fields to not null
 module.exports = (sequelize, DataTypes) => {
 
 	let EventSession = sequelize.define('eventsession', {
@@ -16,10 +16,14 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.DATE,
 			allowNull: true
 		},
-		venue: {
+        venue: {
 			type: DataTypes.STRING,
 			allowNull: true
-		}
+		},
+        time: {
+		    type: DataTypes.TIME,
+            allowNull: true
+        }
 	});
 
 	EventSession.associate = (models) => {
