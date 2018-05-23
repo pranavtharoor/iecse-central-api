@@ -1,7 +1,9 @@
 'use strict';
+
+// @TODO: Change all fields to not null
 module.exports = (sequelize, DataTypes) => {
 
-	var Event = sequelize.define('event', {
+	let Event = sequelize.define('event', {
 		name: {
 			type: DataTypes.STRING,
 			allowNull: true
@@ -38,6 +40,3 @@ module.exports = (sequelize, DataTypes) => {
 
 	return Event;
 };
-
-
-

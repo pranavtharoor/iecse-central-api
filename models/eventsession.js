@@ -1,7 +1,9 @@
 'use strict';
+
+// @TODO: Chaneg all fields to not null
 module.exports = (sequelize, DataTypes) => {
 
-	var EventSession = sequelize.define('eventsession', {
+	let EventSession = sequelize.define('eventsession', {
 		name: {
 			type: DataTypes.STRING,
 			allowNull: true

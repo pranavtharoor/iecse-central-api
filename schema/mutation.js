@@ -1,15 +1,12 @@
 const {
 	GraphQLString,
-	GraphQLInt,
-	GraphQLList,
-	GraphQLSchema,
 	GraphQLObjectType,
 	GraphQLNonNull,
-
 } = require("graphql");
 const GraphQLDate = require('graphql-date');
-const models = require("../models");
 
+
+const models = require("../models");
 const Event = require("./eventType.js");
 const EventSession = require("./eventSessionType.js");
 

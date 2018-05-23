@@ -1,11 +1,7 @@
 const {
 	GraphQLString,
 	GraphQLInt,
-	GraphQLList,
-	GraphQLSchema,
-	GraphQLObjectType,
-	GraphQLNonNull
-	
+	GraphQLObjectType
 } = require("graphql");
 const Event = require("./eventType");
 
