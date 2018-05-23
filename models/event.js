@@ -16,15 +16,15 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: true
         },
-		startDate: {
+		start_date: {
 			type: DataTypes.DATE,
 			allowNull: true
 		},
-        endDate: {
+        end_date: {
             type: DataTypes.DATE,
             allowNull: true
         },
-		audienceType: {
+		audience_type: {
 			type: DataTypes.STRING,
 			allowNull: true
 		},
@@ -37,7 +37,8 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: true
 		}
     }, {
-        updatedAt: false
+        updatedAt: false,
+        underscored: true
     });
 
     Event.associate = function(models) {
@@ -45,6 +46,7 @@ module.exports = (sequelize, DataTypes) => {
         models.event.belongsTo(models.user,{ foreignKey : 'modified_by' });
         models.event.hasMany(models.eventsession);
         models.event.hasMany(models.attendance);
+        models.event.hasMany(models.certificate, {foreignKey: "event_id"});
     };
 
 

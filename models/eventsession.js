@@ -25,7 +25,8 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true
         }
 	}, {
-        updatedAt: false
+        updatedAt: false,
+        underscored: true
     });
 
 	EventSession.associate = (models) => {

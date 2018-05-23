@@ -4,7 +4,8 @@
 module.exports = (sequelize, DataTypes) => {
 
     let Attendance = sequelize.define('attendance', {}, {
-        updatedAt: false
+        updatedAt: false,
+        underscored: true
     });
 
     Attendance.associate = (models) => {
