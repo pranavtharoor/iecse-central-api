@@ -12,7 +12,7 @@ const GraphQLDate = require('graphql-date');
 const models = require("../models");
 const Event = require("./eventType.js");
 const EventSession = require("./eventSessionType.js");
-
+const Attendance = require("./attendanceType");
 
 const mutation = new GraphQLObjectType({
     name: 'Mutation',
@@ -82,6 +82,27 @@ const mutation = new GraphQLObjectType({
                         date: args.date,
                         venue: args.venue,
                         eventId: args.eventId
+                    });
+                }
+            },
+            markAttendance: {
+                type: Attendance,
+                args: {
+                    user_id: {
+                        type: new GraphQLNonNull(GraphQLInt)
+                    },
+                    event_id: {
+                        type: new GraphQLNonNull(GraphQLInt)
+                    },
+                    eventsession_id: {
+                        type: new GraphQLNonNull(GraphQLInt)
+                    }
+                },
+                resolve(root, args) {
+                    return models.attendance.create({
+                        user_id: args.user_id,
+                        event_id: args.event_id,
+                        eventsession_id: args.eventsession_id
                     });
                 }
             }
