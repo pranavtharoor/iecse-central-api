@@ -71,13 +71,17 @@ const mutation = new GraphQLObjectType({
                     venue: {
                         type: new GraphQLNonNull(GraphQLString)
                     },
+                    eventId: {
+                        type: new GraphQLNonNull(GraphQLInt)
+                    }
                 },
                 resolve(root, args) {
                     return models.eventsession.create({
                         name: args.name,
                         description: args.description,
                         date: args.date,
-                        venue: args.venue
+                        venue: args.venue,
+                        eventId: args.eventId
                     });
                 }
             }
