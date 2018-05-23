@@ -18,10 +18,10 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: true
 		},
-		created_by: {
-			type: DataTypes.STRING,
-			allowNull: true
-		},
+		// created_by: {
+		// 	type: DataTypes.STRING,
+		// 	allowNull: true
+		// },
 		status: {
 			type: DataTypes.STRING,
 			allowNull: true
@@ -33,6 +33,8 @@ module.exports = (sequelize, DataTypes) => {
 	});
 
   Event.associate = function(models) {
+	models.event.belongsTo(models.user,{ foreignKey : 'created_by' });
+	models.event.belongsTo(models.user,{ foreignKey : 'modified_by' });
     models.event.hasMany(models.eventsession);
   };
 
