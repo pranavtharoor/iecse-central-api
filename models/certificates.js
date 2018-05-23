@@ -11,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
         domain: {
             type: DataTypes.STRING,
             allowNull: true
-        }
+        },
+    }, {
+        updatedAt: false
     });
 
     Certificate.associate = (models) => {

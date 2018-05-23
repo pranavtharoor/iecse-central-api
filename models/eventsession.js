@@ -24,10 +24,13 @@ module.exports = (sequelize, DataTypes) => {
 		    type: DataTypes.TIME,
             allowNull: true
         }
-	});
+	}, {
+        updatedAt: false
+    });
 
 	EventSession.associate = (models) => {
 		models.eventsession.belongsTo(models.event);
+        models.eventsession.hasMany(models.attendance);
 	};
 
 	return EventSession;

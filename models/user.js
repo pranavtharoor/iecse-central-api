@@ -31,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
         models.user.hasMany(models.event,{ foreignKey : 'created_by' });
         models.user.hasMany(models.event,{ foreignKey : 'modified_by' });
         models.user.hasMany(models.event,{ foreignKey : 'memberId' });
+        models.user.hasMany(models.attendance);
     };
 
     return User;
