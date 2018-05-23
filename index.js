@@ -17,9 +17,15 @@ app.use('/graphql', GraphHTTP({
 
 models.sequelize
     .sync({ force: true })
+<<<<<<< HEAD
     .then(function(err) {
 
         app.listen(port, function() {
+=======
+    .then(function (err) {
+
+        app.listen(port, function () {
+>>>>>>> master
             console.log('Express server listening on port ' + port);
         });
 
