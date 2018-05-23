@@ -4,7 +4,8 @@
     "description": "IECSE's database interface layer",
     "main": "index.js",
     "scripts": {
-        "test": "nodemon start"
+        "test": "nodemon start",
+        "start": "nodemon"
     },
     "repository": {
         "type": "git",

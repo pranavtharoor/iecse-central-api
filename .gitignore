@@ -57,7 +57,10 @@ typings/
 # dotenv environment variables file
 .env
 
-config/
+# App config
+config/databaseConfig.js
+
+# Webstorm Settings
 .idea/
 # VSCode settings
 .vscode/
