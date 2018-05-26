@@ -1,6 +1,6 @@
 module.exports = {
 	"dbhost": "localhost",
 	"dbname": "iecseApi",
-	"dbuser": "",
+	"dbuser": "shreyansh",
 	"dbpassword": ""
 }

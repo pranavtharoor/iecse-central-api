@@ -12,6 +12,8 @@ const models = require("../models");
 
 const Event = require("./eventType.js");
 const EventSession = require("./eventSessionType.js");
+const User = require('./userType');
+const Tutorial = require('./tutorialType');
 
 
 const mutation = new GraphQLObjectType({
@@ -78,6 +80,31 @@ const mutation = new GraphQLObjectType({
                         description: args.description,
                         date: args.date,
                         venue: args.venue
+                    });
+                }
+            },
+            addTutorial: {
+                type:  Tutorial,
+                args: {
+                    title: {
+                        type: new GraphQLNonNull(GraphQLString)
+                    },
+                    body: {
+                        type: new GraphQLNonNull(GraphQLString)
+                    },
+                    status: {
+                        type: new GraphQLNonNull(GraphQLString)
+                    },
+                    created_by: {
+                        type: new GraphQLObjectType(User)
+                    }
+                },
+                resolve(root, args) {
+                    return models.tutorial.create({
+                        title: args.title,
+                        body: args.body,
+                        status: args.status,
+                        created_by: args.created_by.id
                     });
                 }
             }

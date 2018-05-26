@@ -59,6 +59,30 @@ models.sequelize
             });
         });
 
+        models.user.create({
+            memId: 1234,
+            name : 'Shreyansh',
+            email : 'shreyanshmurarka97@gmail.com',
+            type : 2,
+            status : 1
+        }).then(u1 => {
+            models.user.create({
+                memId: 4567,
+                name : 'Ekam',
+                email : 'idontknow@abc.xyz',
+                type : 2,
+                status : 1
+            }).then(u2=>{
+                models.tutorial.create({
+                    title : 'abd',
+                    body : 'Tuto1',
+                    status : 1,
+                    created_by : u1.memId,
+                    modified_by : u2.memId
+                });
+            });
+        });
+
     }, function (err) {
 
         console.log('An error occurred while creating the table:', err);
