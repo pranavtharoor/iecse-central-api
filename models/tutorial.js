@@ -16,8 +16,8 @@ module.exports = (sequelize,DataTypes)=>{
     });
 
     Tutorial.associate = (models) => {
-        models.tutorial.belongsTo(models.user,{ foreignKey : 'created_by' });
-        models.tutorial.belongsTo(models.user,{ foreignKey : 'modified_by' });
+        models.tutorial.belongsTo(models.user,{ as : 'Creator' , foreignKey : 'created_by' });
+        models.tutorial.belongsTo(models.user,{ as : 'Modifier' , foreignKey : 'modified_by' });
     };
 
     return Tutorial;

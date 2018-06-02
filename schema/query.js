@@ -7,9 +7,13 @@ const {
 
 
 const models = require("../models");
+
+const Attendance = require("./attendanceType.js");
 const Event = require("./eventType.js");
 const EventSession = require("./eventSessionType.js");
-const Attendance = require("./attendanceType.js");
+const Tutorial = require('./tutorialType');
+const User = require('./userType');
+
 
 const query = new GraphQLObjectType({
     name: "Query",
@@ -41,7 +45,42 @@ const query = new GraphQLObjectType({
                 resolve(root, args) {
                     return models.attendance.findAll({ where: args })
                 }
-            }
+            },
+
+            users: {
+                type: new GraphQLList(User),
+                args: {
+                    id : {
+                        type: GraphQLInt
+                    },
+                    name : {
+                        type: GraphQLString
+                    },
+                    email : {
+                        type: GraphQLString
+                    }
+                },
+                resolve(root,args){
+                    return models.user.findAll({ where: args });
+                }
+            },
+            tutorials: {
+                type : new GraphQLList(Tutorial),
+                args : {
+                    id : {
+                        type: GraphQLInt
+                    },
+                    title : {
+                        type: GraphQLString
+                    },
+                    status : {
+                        type: GraphQLInt
+                    }
+                },
+                resolve(root,args){
+                    return models.user.findAll({ where : args });
+                }
+            } 
         }
     }
 });

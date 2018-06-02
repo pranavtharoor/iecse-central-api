@@ -10,9 +10,13 @@ const GraphQLDate = require('graphql-date');
 
 
 const models = require("../models");
+
+const Attendance = require("./attendanceType");
 const Event = require("./eventType.js");
 const EventSession = require("./eventSessionType.js");
-const Attendance = require("./attendanceType");
+const Tutorial = require('./tutorialType');
+const User = require('./userType');
+
 
 const mutation = new GraphQLObjectType({
     name: 'Mutation',
@@ -103,6 +107,31 @@ const mutation = new GraphQLObjectType({
                         user_id: args.user_id,
                         event_id: args.event_id,
                         eventsession_id: args.eventsession_id
+                    });
+                }
+            },
+            addTutorial: {
+                type:  Tutorial,
+                args: {
+                    title: {
+                        type: new GraphQLNonNull(GraphQLString)
+                    },
+                    body: {
+                        type: new GraphQLNonNull(GraphQLString)
+                    },
+                    status: {
+                        type: new GraphQLNonNull(GraphQLString)
+                    },
+                    created_by: {
+                        type: new GraphQLObjectType(User)
+                    }
+                },
+                resolve(root, args) {
+                    return models.tutorial.create({
+                        title: args.title,
+                        body: args.body,
+                        status: args.status,
+                        created_by: args.created_by.id
                     });
                 }
             }
