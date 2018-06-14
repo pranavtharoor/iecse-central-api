@@ -39,12 +39,12 @@ const Tutorial = new GraphQLObjectType({
                     return tutorial.status;
                 }
             },
-            created_by : {
-                type : User,
-                resolve(tutorial) {
-                    return tutorial.getCreator();
-                }
-            }
+            // created_by : {
+            //     type : User,
+            //     resolve(tutorial) {
+            //         return tutorial.getCreator();
+            //     }
+            // }
 		}
 	}
 });

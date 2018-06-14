@@ -78,7 +78,7 @@ const query = new GraphQLObjectType({
                     }
                 },
                 resolve(root,args){
-                    return models.user.findAll({ where : args });
+                    return models.tutorial.findAll({ where : args });
                 }
             } 
         }

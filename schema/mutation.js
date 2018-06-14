@@ -121,9 +121,9 @@ const mutation = new GraphQLObjectType({
                     },
                     status: {
                         type: new GraphQLNonNull(GraphQLString)
-                    },
-                    created_by: {
-                        type: new GraphQLObjectType(User)
+                    // },
+                    // created_by: {
+                    //     type: new GraphQLObjectType(User)
                     }
                 },
                 resolve(root, args) {
@@ -131,7 +131,7 @@ const mutation = new GraphQLObjectType({
                         title: args.title,
                         body: args.body,
                         status: args.status,
-                        created_by: args.created_by.id
+                        // created_by: args.created_by.id
                     });
                 }
             }

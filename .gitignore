@@ -64,3 +64,9 @@ config/databaseConfig.js
 .idea/
 # VSCode settings
 .vscode/
+
+# App config
+.config
+
+# Webstorm settings
+.idea/
