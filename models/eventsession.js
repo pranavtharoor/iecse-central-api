@@ -30,8 +30,8 @@ module.exports = (sequelize, DataTypes) => {
     });
 
 	EventSession.associate = (models) => {
-		models.eventsession.belongsTo(models.event);
         models.eventsession.hasMany(models.attendance);
+		models.eventsession.belongsTo(models.event);
 	};
 
 	return EventSession;

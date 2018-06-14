@@ -42,11 +42,13 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Event.associate = function(models) {
-        models.event.belongsTo(models.user,{ foreignKey : 'created_by' });
-        models.event.belongsTo(models.user,{ foreignKey : 'modified_by' });
-        models.event.hasMany(models.eventsession);
         models.event.hasMany(models.attendance);
         models.event.hasMany(models.certificate, {foreignKey: "event_id"});
+
+        models.event.hasMany(models.eventsession);
+        
+        models.event.belongsTo(models.user,{ as : 'CreatedEvents', foreignKey : 'created_by' });
+        models.event.belongsTo(models.user,{ as : 'ModifiedEvents', foreignKey : 'modified_by' });
     };
 
 

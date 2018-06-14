@@ -22,8 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Certificate.associate = (models) => {
-        models.certificate.belongsTo(models.user, {foreignKey: 'member_id'});
         models.certificate.belongsTo(models.event, {foreignKey: 'event_id'});
+        models.certificate.belongsTo(models.user, {foreignKey: 'member_id'});
     };
 
     return Certificate;

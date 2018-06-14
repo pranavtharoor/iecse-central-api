@@ -9,9 +9,9 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Attendance.associate = (models) => {
-        models.attendance.belongsTo(models.user);
         models.attendance.belongsTo(models.event);
         models.attendance.belongsTo(models.eventsession);
+        models.attendance.belongsTo(models.user);
     };
 
     return Attendance;

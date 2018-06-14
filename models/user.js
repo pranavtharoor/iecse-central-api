@@ -32,19 +32,15 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     User.associate = (models)=>{
-<<<<<<< HEAD
-        models.user.hasMany(models.tutorial,{ foreignKey : 'created_by' });
-        models.user.hasMany(models.tutorial,{ foreignKey : 'modified_by' });
-        models.user.hasMany(models.event,{ foreignKey : 'created_by' });
-        models.user.hasMany(models.event,{ foreignKey : 'modified_by' });
-        models.user.hasMany(models.certificate,{ foreignKey : 'member_id' });
+        
         models.user.hasMany(models.attendance);
-=======
-        models.user.hasMany(models.tutorial,{ as : 'CreatedTutorials', foreignKey : 'created_by' });
-        models.user.hasMany(models.tutorial,{ as : 'ModifiedTutorials', foreignKey : 'modified_by' });
+        models.user.hasMany(models.certificate,{ foreignKey : 'member_id' });
+
         models.user.hasMany(models.event,{ as : 'CreatedEvents', foreignKey : 'created_by' });
         models.user.hasMany(models.event,{ as : 'ModifiedEvents', foreignKey : 'modified_by' });
->>>>>>> master
+        
+        models.user.hasMany(models.tutorial,{ as : 'CreatedTutorials', foreignKey : 'created_by' });
+        models.user.hasMany(models.tutorial,{ as : 'ModifiedTutorials', foreignKey : 'modified_by' });
     };
 
     return User;
