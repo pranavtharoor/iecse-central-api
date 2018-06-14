@@ -59,3 +59,9 @@ typings/
 
 # VSCode settings
 .vscode/
+
+# App config
+.config
+
+# Webstorm settings
+.idea/
