@@ -6,7 +6,11 @@ const {
     GraphQLObjectType,
     GraphQLNonNull,
 } = require("graphql");
-const GraphQLDate = require('graphql-date');
+
+const {
+    GraphQLDate,
+    GraphQLTime
+} = require("graphql-iso-date");
 
 
 const models = require("../models");
@@ -16,7 +20,7 @@ const Event = require("./eventType.js");
 const EventSession = require("./eventSessionType.js");
 const Tutorial = require('./tutorialType');
 const User = require('./userType');
-
+const Certificate = require('./certificateType');
 
 const mutation = new GraphQLObjectType({
     name: 'Mutation',
@@ -32,31 +36,39 @@ const mutation = new GraphQLObjectType({
                     description: {
                         type: new GraphQLNonNull(GraphQLString)
                     },
-                    startDate: {
-                        type: GraphQLDate,
-                    },
-                    audienceType: {
+                    details: {
                         type: new GraphQLNonNull(GraphQLString)
                     },
-                    created_by: {
+                    domain: {
                         type: new GraphQLNonNull(GraphQLString)
                     },
                     status: {
                         type: new GraphQLNonNull(GraphQLString)
                     },
-                    domain: {
+                    audienceType: {
                         type: new GraphQLNonNull(GraphQLString)
+                    },
+                    startDate: {
+                        type: new GraphQLNonNull(GraphQLDate),
+                    },
+                    endDate: {
+                        type: new GraphQLNonNull(GraphQLDate)
+                    },
+                    addedBy: {
+                        type: new GraphQLNonNull(GraphQLInt)
                     }
                 },
                 resolve(root, args) {
                     return models.event.create({
                         name: args.name,
                         description: args.description,
-                        startDate: args.startDate,
-                        audienceType: args.audienceType,
-                        created_by: args.created_by,
+                        details: args.details,
+                        start_date: args.startDate,
+                        end_date: args.endDate,
+                        audience_type: args.audienceType,
                         status: args.status,
-                        domain: args.domain
+                        domain: args.domain,
+                        user_memId: args.addedBy
                     });
                 }
             },
@@ -75,6 +87,9 @@ const mutation = new GraphQLObjectType({
                     venue: {
                         type: new GraphQLNonNull(GraphQLString)
                     },
+                    time: {
+                        type: new GraphQLNonNull(GraphQLTime)
+                    },
                     eventId: {
                         type: new GraphQLNonNull(GraphQLInt)
                     }
@@ -85,28 +100,8 @@ const mutation = new GraphQLObjectType({
                         description: args.description,
                         date: args.date,
                         venue: args.venue,
-                        eventId: args.eventId
-                    });
-                }
-            },
-            markAttendance: {
-                type: Attendance,
-                args: {
-                    user_id: {
-                        type: new GraphQLNonNull(GraphQLInt)
-                    },
-                    event_id: {
-                        type: new GraphQLNonNull(GraphQLInt)
-                    },
-                    eventsession_id: {
-                        type: new GraphQLNonNull(GraphQLInt)
-                    }
-                },
-                resolve(root, args) {
-                    return models.attendance.create({
-                        user_id: args.user_id,
-                        event_id: args.event_id,
-                        eventsession_id: args.eventsession_id
+                        time: args.time,
+                        event_id: args.eventId
                     });
                 }
             },
@@ -132,6 +127,27 @@ const mutation = new GraphQLObjectType({
                         body: args.body,
                         status: args.status,
                         // created_by: args.created_by.id
+                    });
+                }
+            },
+            generateCertificate: {
+                type: Certificate,
+                args: {
+                    domain: {
+                        type: new GraphQLNonNull(GraphQLString)
+                    },
+                    event_id: {
+                        type: new GraphQLNonNull(GraphQLInt)
+                    },
+                    user_memId: {
+                        type: new GraphQLNonNull(GraphQLInt)
+                    }
+                },
+                resolve(root, args) {
+                    return models.certificate.create({
+                        domain: args.domain,
+                        event_id: args.event_id,
+                        user_memId: args.user_memId
                     });
                 }
             }

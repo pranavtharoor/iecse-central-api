@@ -47,8 +47,8 @@ module.exports = (sequelize, DataTypes) => {
 
         models.event.hasMany(models.eventsession);
         
-        models.event.belongsTo(models.user,{ as : 'CreatedEvents', foreignKey : 'created_by' });
-        models.event.belongsTo(models.user,{ as : 'ModifiedEvents', foreignKey : 'modified_by' });
+        models.event.belongsTo(models.user);
+        models.event.belongsTo(models.user, {as: 'ModifiedEvent' , foreignKey: "modified_by"})
     };
 
 

@@ -17,25 +17,7 @@ const Attendance = new GraphQLObjectType({
                 resolve(attendance) {
                     return attendance.id;
                 }
-            },
-            member_id: {
-                type: GraphQLInt,
-                resolve(attendance) {
-                    return attendance.name;
-                }
-            },
-            event: {
-                type: Event,
-                resolve(attendance) {
-                    return attendance.getEvent();
-                }
-            },
-            eventsession: {
-                type: EventSession,
-                resolve(attendance) {
-                    return attendance.getEventsessions();
-                }
-            },
+            }
         }
     }
 });
