@@ -1,7 +1,9 @@
 'use strict';
+
+// @TODO: Change all fields to not null
 module.exports = (sequelize, DataTypes) => {
 
-	var Event = sequelize.define('event', {
+	let Event = sequelize.define('event', {
 		name: {
 			type: DataTypes.STRING,
 			allowNull: true
@@ -10,18 +12,22 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: true
 		},
-		startDate: {
+        details: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+		start_date: {
 			type: DataTypes.DATE,
 			allowNull: true
 		},
-		audienceType: {
+        end_date: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+		audience_type: {
 			type: DataTypes.STRING,
 			allowNull: true
 		},
-		// created_by: {
-		// 	type: DataTypes.STRING,
-		// 	allowNull: true
-		// },
 		status: {
 			type: DataTypes.STRING,
 			allowNull: true
@@ -30,16 +36,21 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: true
 		}
-	});
+    }, {
+        updatedAt: false,
+        underscored: true
+    });
 
-  Event.associate = function(models) {
-	models.event.belongsTo(models.user,{ foreignKey : 'created_by' });
-	models.event.belongsTo(models.user,{ foreignKey : 'modified_by' });
-    models.event.hasMany(models.eventsession);
-  };
+    Event.associate = function(models) {
+        models.event.hasMany(models.attendance);
+        models.event.hasMany(models.certificate, {foreignKey: "event_id"});
+
+        models.event.hasMany(models.eventsession);
+        
+        models.event.belongsTo(models.user);
+        models.event.belongsTo(models.user, {as: 'ModifiedEvent' , foreignKey: "modified_by"})
+    };
+
 
 	return Event;
 };
-
-
-

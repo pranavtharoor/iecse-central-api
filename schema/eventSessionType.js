@@ -1,12 +1,15 @@
 const {
 	GraphQLString,
 	GraphQLInt,
-	GraphQLList,
-	GraphQLSchema,
 	GraphQLObjectType,
-	GraphQLNonNull
-	
+    GraphQLList
 } = require("graphql");
+
+const {
+    GraphQLDate,
+    GraphQLTime
+} = require("graphql-iso-date");
+
 const Event = require("./eventType");
 
 const EventSession = new GraphQLObjectType({
@@ -32,6 +35,24 @@ const EventSession = new GraphQLObjectType({
 					return eventSession.description;
 				}
 			},
+			date: {
+				type: GraphQLDate,
+				resolve(eventsession) {
+					return eventsession.date
+				}
+			},
+			venue : {
+				type: GraphQLString,
+				resolve(eventsession) {
+					return eventsession.venue
+				}
+			},
+			time: {
+				type: GraphQLTime,
+                resolve(eventsession) {
+				    return eventsession.time
+                }
+			},
 			event: {
 				type: Event,
 				resolve(eventSession) {
@@ -43,3 +64,4 @@ const EventSession = new GraphQLObjectType({
 });
 
 module.exports = EventSession;
+

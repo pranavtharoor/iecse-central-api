@@ -4,7 +4,8 @@
     "description": "IECSE's database interface layer",
     "main": "index.js",
     "scripts": {
-        "test": "nodemon start"
+        "test": "nodemon start",
+        "start": "nodemon"
     },
     "repository": {
         "type": "git",
@@ -30,7 +31,9 @@
         "graphiql": "^0.11.11",
         "graphql": "^0.13.2",
         "graphql-date": "^1.0.3",
+        "graphql-iso-date": "^3.5.0",
         "lodash": "^4.17.10",
+        "morgan": "^1.9.0",
         "mysql2": "^1.5.3",
         "sequelize": "^4.37.7"
     }

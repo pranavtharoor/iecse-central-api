@@ -2,18 +2,18 @@ const {
     GraphQLString,
     GraphQLInt,
     GraphQLList,
-    GraphQLSchema,
-    GraphQLObjectType,
-    GraphQLNonNull
-
+    GraphQLObjectType
 } = require("graphql");
+
+
 const models = require("../models");
 
-const Event = require("./eventType");
-const EventSession = require("./eventSessionType");
-const User = require('./userType');
+const Attendance = require("./attendanceType.js");
+const Event = require("./eventType.js");
+const EventSession = require("./eventSessionType.js");
 const Tutorial = require('./tutorialType');
-
+const User = require('./userType');
+const Certificate = require('./certificateType');
 
 const query = new GraphQLObjectType({
     name: "Query",
@@ -38,6 +38,18 @@ const query = new GraphQLObjectType({
                 type: new GraphQLList(EventSession),
                 resolve(root, args) {
                     return models.eventsession.findAll({ where: args });
+                }
+            },
+            attendance: {
+                type: new GraphQLList(Attendance),
+                resolve(root, args) {
+                    return models.attendance.findAll({ where: args })
+                }
+            },
+            certificate: {
+                type: new GraphQLList(Certificate),
+                resolve(root, args) {
+                    return models.certificate.findAll({ where: args });
                 }
             },
             users: {

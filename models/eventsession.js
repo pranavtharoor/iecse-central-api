@@ -1,7 +1,9 @@
 'use strict';
+
+// @TODO: Change all fields to not null
 module.exports = (sequelize, DataTypes) => {
 
-	var EventSession = sequelize.define('eventsession', {
+	let EventSession = sequelize.define('eventsession', {
 		name: {
 			type: DataTypes.STRING,
 			allowNull: true
@@ -14,13 +16,21 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.DATE,
 			allowNull: true
 		},
-		venue: {
+        venue: {
 			type: DataTypes.STRING,
 			allowNull: true
-		}
-	});
+		},
+        time: {
+		    type: DataTypes.TIME,
+            allowNull: true
+        }
+	}, {
+        updatedAt: false,
+        underscored: true
+    });
 
 	EventSession.associate = (models) => {
+        models.eventsession.hasMany(models.attendance);
 		models.eventsession.belongsTo(models.event);
 	};
 
